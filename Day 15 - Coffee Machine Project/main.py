@@ -39,10 +39,10 @@ def run_report():
 
 
 def check_resources(selection):
-    for i in MENU[selection]["ingredients"]:
-        required_amt = MENU[selection]["ingredients"][i]
-        if resources[i] < required_amt:
-            print(f'Sorry there is not enough {i}')
+    for key in MENU[selection]["ingredients"]:
+        required_amt = MENU[selection]["ingredients"][key]
+        if resources[key] < required_amt:
+            print(f'Sorry there is not enough {key}')
             return False
         else:
             return True
