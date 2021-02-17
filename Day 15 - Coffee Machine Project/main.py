@@ -73,11 +73,10 @@ def check_transaction(avail_money, selection):
 
 
 def make_coffee(selection):
-    if MENU[selection]["ingredients"]["milk"] is not None:
-        resources["milk"] -= MENU[selection]["ingredients"]["milk"]
-
-    resources["water"] -= MENU[selection]["ingredients"]["water"]
-    resources["coffee"] -= MENU[selection]["ingredients"]["coffee"]
+    for key in resources:
+        MENU[selection]["ingredients"].setdefault(key)
+        if MENU[selection]["ingredients"][key] is not None:
+            resources[key] -= MENU[selection]["ingredients"][key]
     resources["money"] += MENU[selection]["cost"]
 
 
@@ -99,4 +98,4 @@ while run_coffee_machine is True:
             if user_input == "latte":
                 print("Here is your latte. Enjoy!\n")
         else:
-            run_coffee_machine = False
+            pass
